@@ -1,18 +1,27 @@
-const express = require('express');
-const mysql = require('mysql2');
-const cors = require('cors');
-
-// Iniciar o servidor
-const app = express();
-const port = 3000;
-
-// Configurações do banco de dados
+const mysql = require('mysql2')
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'meu_formulario',
+  host: 'localhost',
+  user: 'rodrigo',
+  password: '123',
+  database: 'meu_formulario'
+})
+
+connection.connect()
+
+const express = require('express');
+const path = require('path');
+
+const app = express();
+const port = process.env.PORT || 8080 || 3000;
+
+app.get('/', function(req, res) {
+  res.sendFile(path.join(__dirname, '/view/index.html'));
 });
+
+app.listen(port);
+console.log('Server started at http://localhost:' + port);
+
+app.use(express.json());
 
 // Conectar ao banco de dados
 connection.connect((err) => {
@@ -24,6 +33,7 @@ connection.connect((err) => {
 });
 
 // Middlewares
+const cors = require('cors');
 app.use(cors());
 app.use(express.json()); // Para lidar com JSON
 app.use(express.static('view'));
@@ -45,11 +55,3 @@ app.post('/mercadoria', (req, res) => {
       }
   });
 });
-
-// Iniciar o servidor
-app.listen(port, () => {
-  console.log('Servidor escutando a porta: ' + port);
-});
-
-
-

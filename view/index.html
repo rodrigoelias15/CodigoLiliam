@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserir mercadoria</title>
+    
+</head>
+
+<body>
+    <h1>
+        Formulário de Mercadorias
+    </h1>
+    <form id="incMerc" method="POST" action="/mercadoria">
+        <label for="productName">Nome do Produto:</label> <br>
+        <input type="text" id="productName" name="productName" required> <br> <br> 
+        <label for="productPrice">Preço do Produto:</label> <br>
+        <input type="number" id="productPrice" name="productPrice" required> <br> <br> 
+        <label for="id">codigo:</label> <br>
+        <input type="number" id="id" name="id" required> <br> <br> 
+        <label for="disponivel">Disponível:</label> <br>
+        <input type="checkbox" id="disponivel" name="disponivel" > <br> <br> 
+        <input type="button" value="Mercadoria" onclick="incMercadoria()">
+    </form>
+    <script src="mercadoria.js"></script>
+</body>
+ </html>
